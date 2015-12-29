@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<style>
+			html, body { margin:0; padding:0;}
+			canvas{ background-color: #f1f1f1;}
+			h2{ text-align: center; color: darkblue;}
+
+		</style>
+	</head>
+	<body>
+		<h2>Kamino's Blog</h2>
+
+		<canvas id="canvas" onClick="getsize()"></canvas>
+		<script>
+
+			var ctx; 
+			
+			function setup() { 
+			    var canvas;            
+			        canvas = document.getElementById("canvas");
+			        canvas.width = window.innerWidth;
+			        canvas.height = window.innerHeight;
+			    ctx = canvas.getContext("2d");
+			}
+
+
+			var cube = {
+				x: 0,
+				y: 0,
+				width: 8,
+				height: 8,
+				color: '#ccc',
+				outline: this.color,
+				draw: function(){
+					ctx.fillStyle = this.color;
+					ctx.strokeStyle = this.outline;
+					ctx.fillRect(this.x,this.y,this.width,this.height);
+					ctx.strokeRect(this.x,this.y,this.width,this.height);
+				},
+				erase: function(){
+					ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+				},
+				fade: function(o){
+					if(o){
+						ctx.fillStyle = "rgba(241, 241, 241, "+o+")"; 
+						ctx.fillRect(0, 0, canvas.width, canvas.height);
+					} else {
+						console.log('you forgot to set youre fade parameter!')
+					}
+				}
+			}
+						
+		</script>
+
+		<script src="draw.js"></script>
+
+		<script>
+
+			setup(); 
+			setInterval(draw, 1000 / 60); 
+			
+		</script>
+
+	</body>
+</html>
