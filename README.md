@@ -1,0 +1,2 @@
+# Blog
+Kamino's Blog
